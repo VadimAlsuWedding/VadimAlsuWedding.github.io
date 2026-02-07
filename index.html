@@ -13,9 +13,6 @@ html, body {
   padding: 0;
   background: #f3e7dc;
   overflow-x: hidden;
-}
-
-body {
   font-family: 'Montserrat', sans-serif;
   text-align: center;
   color: #2b2b2b;
@@ -72,67 +69,6 @@ h2, h3 {
   line-height: 1.6;
 }
 
-.invite h3 {
-  font-size: 36px;
-  margin-top: 25px;
-}
-
-/* ===== RSVP ===== */
-.rsvp {
-  position: relative;
-  margin-top: 25px;
-  margin-bottom: 50px;
-}
-
-.rsvp-btn {
-  background: transparent;
-  border: 1px solid #bfae9e;
-  padding: 14px 34px;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 14px;
-  letter-spacing: 1px;
-  color: #2b2b2b;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.rsvp-btn:hover {
-  background: #bfae9e;
-  color: #fff;
-}
-
-.rsvp-menu {
-  position: absolute;
-  top: 110%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #f3e7dc;
-  border: 1px solid #d8cfc6;
-  border-radius: 14px;
-  padding: 10px 0;
-  width: 220px;
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.3s ease;
-}
-
-.rsvp-menu a {
-  display: block;
-  padding: 12px 0;
-  text-decoration: none;
-  color: #2b2b2b;
-  font-size: 14px;
-}
-
-.rsvp-menu a:hover {
-  background: rgba(0,0,0,0.04);
-}
-
-.rsvp-menu.active {
-  opacity: 1;
-  pointer-events: auto;
-}
-
 /* ===== МЫ ===== */
 .about-us {
   position: relative;
@@ -143,14 +79,9 @@ h2, h3 {
 }
 
 .we-title {
-  position: absolute;
-  top: 120px;
-  width: 100%;
   font-size: 25px;
   color: #fff;
-  z-index: 2;
   text-align: center;
-  transform: translateX(-25px);
 }
 
 .we-center {
@@ -164,9 +95,11 @@ h2, h3 {
   align-items: center;
 }
 
+/* viewport со скроллом */
 .we-gallery-viewport {
   width: 100vw;
   overflow-x: auto;
+  overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -174,6 +107,7 @@ h2, h3 {
   display: none;
 }
 
+/* лента */
 .we-gallery {
   display: flex;
   gap: 16px;
@@ -181,9 +115,11 @@ h2, h3 {
   width: max-content;
 }
 
+/* фото */
 .we-gallery img {
   width: 260px;
   height: 360px;
+  flex: 0 0 auto;
   object-fit: cover;
   border-radius: 18px;
   user-select: none;
@@ -209,15 +145,9 @@ h2, h3 {
 /* ===== LOCATION ===== */
 .location {
   position: relative;
+  height: 750px;
   background: url("./images/FonLocation.png") center/cover no-repeat;
   color: #fff;
-  min-height: 650px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 0 20px;
-  overflow: hidden;
 }
 
 .location::before {
@@ -227,51 +157,21 @@ h2, h3 {
   background: linear-gradient(
     to bottom,
     rgba(0,0,0,0) 0%,
-    rgba(0,0,0,0.55) 50%,
+    rgba(0,0,0,0.55) 45%,
+    rgba(0,0,0,0.55) 55%,
     rgba(0,0,0,0) 100%
   );
-  z-index: 1;
 }
 
 .location .content {
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 2;
 }
 
-.location p {
-  font-size: 18px;
-  line-height: 1.5;
-  color: #fff;
-}
-
-.map-btn {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 12px 28px;
-  border: 1px solid #bfae9e;
-  border-radius: 14px;
-  background: transparent;
-  color: #fff;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 14px;
-  cursor: pointer;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.map-btn:hover {
-  background: #bfae9e;
-  color: #fff;
-}
-
 /* ===== DETAILS ===== */
-.divider {
-  width: 60px;
-  height: 1px;
-  background: #bfae9e;
-  margin: 35px auto;
-}
-
 .colors {
   display: flex;
   justify-content: center;
@@ -288,41 +188,15 @@ h2, h3 {
 
 .c1 { background: #cbd6d2; }
 .c2 { background: #e0afb3; }
-.c3 { background: #fadedb; }
+.c3 { background: #fadedb; } /* изменили повторяющийся цвет */
 .c4 { background: #d6e4e7; }
 .c5 { background: #d6cdbf; }
 
-/* ===== Countdown в details ===== */
-.countdown-section {
-  margin-top: 40px;
-  text-align: center;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.8s ease;
-}
-
-.countdown-section.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.countdown-section h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 20px;
-  margin-bottom: 15px;
-  color: #2b2b2b;
-}
-
-.countdown {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 20px;
-  letter-spacing: 1px;
-  color: #2b2b2b;
-}
-
-.countdown span {
-  font-weight: 600;
-  margin: 0 5px;
+.divider {
+  width: 60px;
+  height: 1px;
+  background: #bfae9e;
+  margin: 35px auto;
 }
 
 footer {
@@ -330,18 +204,50 @@ footer {
   font-size: 12px;
   opacity: 0.7;
 }
+
+/* ===== ANIMATIONS ===== */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
+
+.slide-up {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideUp 0.8s forwards;
+}
+
+.button-anim {
+  display: inline-block;
+  padding: 12px 20px;
+  margin: 5px;
+  border: 1px solid #bfae9e;
+  border-radius: 14px;
+  background: transparent;
+  color: #2b2b2b;
+  font-family: 'Montserrat', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button-anim:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+@keyframes fadeIn { to { opacity: 1; } }
+@keyframes slideUp { to { opacity: 1; transform: translateY(0); } }
 </style>
-  
 </head>
 
 <body>
 
 <section class="hero">
-  <div class="names">ВАДИМ<br>&amp;<br>АЛСУ</div>
+  <div class="names fade-in">ВАДИМ<br>&amp;<br>АЛСУ</div>
 </section>
 
 <section class="invite">
-  <div class="content">
+  <div class="content fade-in">
     <p><strong>ДОРОГИЕ ДРУЗЬЯ И РОДНЫЕ!</strong></p>
     <p>
       Есть события которые остаются в памяти на всю жизнь.<br>
@@ -349,55 +255,38 @@ footer {
       С большой радостью приглашаем вас разделить с нами главное событие этой весны —
       день нашей свадьбы.
     </p>
-    <h3>18.04.26</h3>
-
-    <div class="rsvp">
-      <button class="rsvp-btn" id="rsvpBtn">Подтвердить присутствие</button>
-      <div class="rsvp-menu" id="rsvpMenu">
-        <a href="https://wa.me/79871013865?text=Здравствуйте!%0AПодтверждаю%20своё%20присутствие%20на%20вашей%20свадьбе%20💍%0AИмя%20гостя:%0AБуду%20(один%20/%20с%20парой)"
-   target="_blank">
-  WhatsApp
-</a>
-<a href="https://t.me/tomasorato" target="_blank">
-  Telegram
-</a>
-<p style="font-size:13px;opacity:0.7;margin-top:10px;">
-  Пожалуйста, напишите ваше имя и формат присутствия
-</p>
-</a>
-
-</a>
-</a>
-     </div>
+    <h3 style="font-size:32px;">18.04.26</h3>
+    <div class="slide-up">
+      <a href="https://wa.me/79871013865" class="button-anim">WhatsApp</a>
+      <a href="https://t.me/tomasorato" class="button-anim">Telegram</a>
     </div>
   </div>
 </section>
 
 <section class="about-us">
-  <h2 class="we-title">
-    НАШИ СЧАСТЛИВЫЕ<br>
-    <span>МОМЕНТЫ</span>
+  <h2 class="we-title fade-in">
+    НАШИ СЧАСТЛИВЫЕ<br><span>МОМЕНТЫ</span>
   </h2>
 
   <div class="we-center">
-    <div class="we-gallery-viewport">
+    <div class="we-gallery-viewport slide-up">
       <div class="we-gallery" id="weGallery">
-        <img src="./images/We1.jpg">
-        <img src="./images/We2.jpg">
-        <img src="./images/We3.jpg">
-        <img src="./images/We4.jpg">
-        <img src="./images/We5.jpg">
-        <img src="./images/We6.jpg">
-        <img src="./images/We7.jpg">
-        <img src="./images/We8.jpg">
-        <img src="./images/We9.jpg">
-        <img src="./images/We10.jpg">
-        <img src="./images/We11.jpg">
-        <img src="./images/We12.jpg">
+        <img src="./images/We1.jpg" loading="lazy">
+        <img src="./images/We2.jpg" loading="lazy">
+        <img src="./images/We3.jpg" loading="lazy">
+        <img src="./images/We4.jpg" loading="lazy">
+        <img src="./images/We5.jpg" loading="lazy">
+        <img src="./images/We6.jpg" loading="lazy">
+        <img src="./images/We7.jpg" loading="lazy">
+        <img src="./images/We8.jpg" loading="lazy">
+        <img src="./images/We9.jpg" loading="lazy">
+        <img src="./images/We10.jpg" loading="lazy">
+        <img src="./images/We11.jpg" loading="lazy">
+        <img src="./images/We12.jpg" loading="lazy">
       </div>
     </div>
 
-    <p class="we-text">
+    <p class="we-text fade-in">
       Не ищите любви, ищите того, кто принесёт вам счастье.<br>
       Рано или поздно это счастье превратится в любовь.
     </p>
@@ -405,32 +294,26 @@ footer {
 </section>
 
 <section>
-  <div class="content">
+  <div class="content fade-in">
     <h2>ТАЙМИНГ</h2>
-    <div class="time-row"><span>16:30</span><span>Сбор гостей / фуршет</span></div>
-    <div class="time-row"><span>17:00</span><span>Торжественная церемония</span></div>
-    <div class="time-row"><span>17:30</span><span>Праздничный банкет</span></div>
-    <div class="time-row"><span>23:00</span><span>Завершение банкета</span></div>
+    <div class="time-row slide-up"><span>16:30</span><span>Сбор гостей / фуршет</span></div>
+    <div class="time-row slide-up"><span>17:00</span><span>Торжественная церемония</span></div>
+    <div class="time-row slide-up"><span>17:30</span><span>Праздничный банкет</span></div>
+    <div class="time-row slide-up"><span>23:00</span><span>Завершение банкета</span></div>
   </div>
 </section>
 
 <section class="location">
-  <div class="content">
+  <div class="content fade-in">
     <h2>ЛОКАЦИЯ</h2>
-    <p>
-      <strong>Комплекс «Тан»</strong><br>
-      г. Уфа, ул. Рихарда Зорге, 65
-    </p>
-
-    <a class="map-btn" 
-       href="https://yandex.ru/maps/?rtext=~54.770474,56.010865&rtt=auto" 
-       target="_blank">
-       Построить маршрут
+    <p style="font-size:18px;"><strong>Комплекс «Тан»</strong><br>г. Уфа, ул. Рихарда Зорге, 65</p>
+    <a href="https://yandex.ru/maps/?ll=54.770474%2C56.010865&mode=routes" target="_blank" class="button-anim slide-up">
+      Построить маршрут
     </a>
   </div>
 </section>
 
-<section class="details">
+<section class="details fade-in">
   <div class="content">
     <h3>ДРЕСС-КОД</h3>
     <p>
@@ -438,7 +321,7 @@ footer {
       Но будем очень благодарны, если поддержите цветовую гамму свадьбы.
     </p>
 
-    <div class="colors">
+    <div class="colors slide-up">
       <span class="c1"></span>
       <span class="c2"></span>
       <span class="c3"></span>
@@ -463,17 +346,8 @@ footer {
       +7 964 955-52-60 — Алсу ♥️
     </p>
 
-    <!-- ===== Countdown ===== -->
-    <div class="countdown-section">
-      <h3>До события осталось</h3>
-      <div class="countdown" id="countdown">
-        <span id="days">00</span> д 
-        <span id="hours">00</span> ч 
-        <span id="minutes">00</span> м 
-        <span id="seconds">00</span> с
-      </div>
-    </div>
-
+    <h3 class="slide-up" style="margin-top:40px;">До события осталось</h3>
+    <p id="countdown" class="slide-up" style="font-size:18px;"></p>
   </div>
 </section>
 
@@ -482,20 +356,16 @@ footer {
 </footer>
 
 <script>
-// ===== Галерея "Мы" =====
+// ===== WE GALLERY =====
 const viewport = document.querySelector('.we-gallery-viewport');
 const gallery = document.getElementById('weGallery');
-[...gallery.children].forEach(img => {
-  gallery.appendChild(img.cloneNode(true));
-});
-let speed = 0.25;
-let paused = false;
+[...gallery.children].forEach(img => gallery.appendChild(img.cloneNode(true)));
+
+let speed = 0.25, paused = false;
 function loop() {
   if (!paused) {
     viewport.scrollLeft += speed;
-    if (viewport.scrollLeft >= gallery.scrollWidth / 2) {
-      viewport.scrollLeft = 0;
-    }
+    if (viewport.scrollLeft >= gallery.scrollWidth / 2) viewport.scrollLeft = 0;
   }
   requestAnimationFrame(loop);
 }
@@ -503,51 +373,29 @@ viewport.addEventListener('touchstart', () => paused = true);
 viewport.addEventListener('touchend', () => paused = false);
 loop();
 
-// ===== RSVP =====
-const rsvpBtn = document.getElementById('rsvpBtn');
-const rsvpMenu = document.getElementById('rsvpMenu');
-rsvpBtn.addEventListener('click', () => {
-  rsvpMenu.classList.toggle('active');
-});
-document.addEventListener('click', (e) => {
-  if (!e.target.closest('.rsvp')) {
-    rsvpMenu.classList.remove('active');
-  }
-});
+// ===== SCROLL ANIMATIONS =====
+const scrollElements = document.querySelectorAll('.fade-in, .slide-up');
+const elementInView = (el, offset = 0) => el.getBoundingClientRect().top <= (window.innerHeight || document.documentElement.clientHeight) - offset;
+const displayScrollElement = (el) => { el.style.opacity=1; el.style.transform='translateY(0)'; }
+const handleScrollAnimation = () => { scrollElements.forEach(el=>{if(elementInView(el,100)) displayScrollElement(el);}); }
+window.addEventListener('scroll', handleScrollAnimation);
+window.addEventListener('load', handleScrollAnimation);
 
-// ===== Таймер обратного отсчёта =====
-const weddingDate = new Date("April 18, 2026 00:00:00").getTime();
+// ===== COUNTDOWN =====
+const countdownEl = document.getElementById('countdown');
+const eventDate = new Date("2026-04-18T00:00:00");
 function updateCountdown() {
-  const now = new Date().getTime();
-  const distance = weddingDate - now;
-  if (distance < 0) {
-    document.getElementById("countdown").innerHTML = "СВАДЬБА!";
-    return;
-  }
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000*60*60));
-  const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
-  const seconds = Math.floor((distance % (1000*60)) / 1000);
-  document.getElementById("days").innerText = String(days).padStart(2,'0');
-  document.getElementById("hours").innerText = String(hours).padStart(2,'0');
-  document.getElementById("minutes").innerText = String(minutes).padStart(2,'0');
-  document.getElementById("seconds").innerText = String(seconds).padStart(2,'0');
+  const now = new Date();
+  const diff = eventDate - now;
+  if(diff<=0){countdownEl.innerText="Свадьба уже здесь!"; return;}
+  const days = Math.floor(diff/1000/60/60/24);
+  const hours = Math.floor(diff/1000/60/60)%24;
+  const mins = Math.floor(diff/1000/60)%60;
+  const secs = Math.floor(diff/1000)%60;
+  countdownEl.innerText = `${days} дн ${hours} ч ${mins} мин ${secs} сек`;
 }
-setInterval(updateCountdown, 1000);
+setInterval(updateCountdown,1000);
 updateCountdown();
-
-// ===== Анимация появления таймера =====
-const countdownSection = document.querySelector('.countdown-section');
-function revealCountdown() {
-  const top = countdownSection.getBoundingClientRect().top;
-  const windowHeight = window.innerHeight;
-  if(top < windowHeight - 100) {
-    countdownSection.classList.add('visible');
-    window.removeEventListener('scroll', revealCountdown);
-  }
-}
-window.addEventListener('scroll', revealCountdown);
-revealCountdown();
 </script>
 
 </body>
