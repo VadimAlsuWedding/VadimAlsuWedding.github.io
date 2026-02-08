@@ -78,10 +78,14 @@ h2, h3 {
   margin-top: 20px;
 }
 
-/* ===== RSVP BUTTON ===== */
+/* ===== RSVP ===== */
+.rsvp-wrap {
+  position: relative;
+  margin-top: 30px;
+}
+
 .rsvp-btn {
   display: inline-block;
-  margin-top: 30px;
   padding: 14px 28px;
   border-radius: 30px;
   background: #bfae9e;
@@ -89,12 +93,47 @@ h2, h3 {
   text-decoration: none;
   font-size: 14px;
   letter-spacing: 1px;
+  cursor: pointer;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .rsvp-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+}
+
+/* выпадающее окно */
+.rsvp-menu {
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #f3e7dc;
+  border-radius: 18px;
+  padding: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 220px;
+}
+
+.rsvp-menu a {
+  display: block;
+  padding: 12px;
+  border-radius: 14px;
+  text-decoration: none;
+  color: #2b2b2b;
+  background: #fff;
+  font-size: 14px;
+}
+
+.rsvp-menu a:hover {
+  background: #efe6dd;
+}
+
+.rsvp-wrap.open .rsvp-menu {
+  display: flex;
 }
 
 /* ===== TIMING ===== */
@@ -135,7 +174,6 @@ h2, h3 {
 
 .location p {
   font-size: 18px;
-  line-height: 1.5;
 }
 
 /* ===== DETAILS ===== */
@@ -174,12 +212,7 @@ h2, h3 {
   margin-top: 25px;
 }
 
-.timer div {
-  text-align: center;
-}
-
 .timer span {
-  display: block;
   font-size: 28px;
   font-family: 'Playfair Display', serif;
 }
@@ -200,7 +233,7 @@ footer {
 <body>
 
 <section class="hero">
-  <div class="names" data-aos="fade-up">
+  <div class="names">
     ВАДИМ<br>&amp;<br>АЛСУ
   </div>
 </section>
@@ -216,14 +249,13 @@ footer {
     </p>
     <h3>18.04.26</h3>
 
-    <a
-      href="https://wa.me/79871013865?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%0A%D0%9F%D0%BE%D0%B4%D1%82%D0%B2%D0%B5%D1%80%D0%B6%D0%B4%D0%B0%D1%8E%20%D1%81%D0%B2%D0%BE%D1%91%20%D0%BF%D1%80%D0%B8%D1%81%D1%83%D1%82%D1%81%D1%82%D0%B2%D0%B8%D0%B5%20%D0%BD%D0%B0%20%D0%B2%D0%B0%D1%88%D0%B5%D0%B9%20%D1%81%D0%B2%D0%B0%D0%B4%D1%8C%D0%B1%D0%B5%20%F0%9F%92%8D%0A%D0%98%D0%BC%D1%8F%20%D0%B3%D0%BE%D1%81%D1%82%D1%8F%3A%0A%D0%91%D1%83%D0%B4%D1%83%20(%D0%BE%D0%B4%D0%B8%D0%BD%20/%20%D1%81%20%D0%BF%D0%B0%D1%80%D0%BE%D0%B9)"
-      target="_blank"
-      class="rsvp-btn"
-      data-aos="zoom-in"
-    >
-      Подтвердить присутствие
-    </a>
+    <div class="rsvp-wrap" id="rsvp">
+      <div class="rsvp-btn">Подтвердить присутствие</div>
+      <div class="rsvp-menu">
+        <a href="https://wa.me/79871013865" target="_blank">WhatsApp</a>
+        <a href="https://t.me/tomasorato" target="_blank">Telegram</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -242,11 +274,7 @@ footer {
     <h2>ЛОКАЦИЯ</h2>
     <p><strong>Комплекс «Тан»</strong><br>г. Уфа, ул. Рихарда Зорге, 65</p>
 
-    <a
-      class="rsvp-btn"
-      href="https://yandex.ru/maps/?rtext=~54.770474,56.010865"
-      target="_blank"
-    >
+    <a class="rsvp-btn" href="https://yandex.ru/maps/?rtext=~54.770474,56.010865" target="_blank">
       Построить маршрут
     </a>
   </div>
@@ -255,10 +283,6 @@ footer {
 <section class="details">
   <div class="content" data-aos="fade-up">
     <h3>ДРЕСС-КОД</h3>
-    <p>
-      Для нас самое главное – ваше присутствие.<br>
-      Но будем очень благодарны, если поддержите цветовую гамму свадьбы.
-    </p>
 
     <div class="colors">
       <span class="c1"></span>
@@ -267,14 +291,6 @@ footer {
       <span class="c4"></span>
       <span class="c5"></span>
     </div>
-
-    <div class="divider"></div>
-
-    <h3>18+</h3>
-    <p>
-      Просим оставить ваших малышей в надёжных руках на день торжества,
-      так как формат нашей свадьбы не предполагает детской зоны и аниматоров.
-    </p>
 
     <div class="divider"></div>
 
@@ -292,10 +308,16 @@ footer {
 AOS.init({
   duration: 900,
   easing: 'ease-out',
-  once: true,
-  offset: 80
+  once: true
 });
 
+// RSVP toggle
+const rsvp = document.getElementById('rsvp');
+rsvp.querySelector('.rsvp-btn').addEventListener('click', () => {
+  rsvp.classList.toggle('open');
+});
+
+// Timer
 const weddingDate = new Date('2026-04-18T00:00:00').getTime();
 const timer = document.getElementById('timer');
 
