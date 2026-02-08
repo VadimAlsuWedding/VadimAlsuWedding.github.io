@@ -6,6 +6,7 @@
 <title>Свадебное приглашение</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
 <style>
 html, body {
@@ -73,23 +74,27 @@ h2, h3 {
 }
 
 .invite h3 {
-  font-size: 32px;
-  margin-top: 25px;
+  font-size: 34px;
+  margin-top: 20px;
 }
 
-.rsvp {
-  margin-top: 25px;
-}
-
-.rsvp a {
+/* ===== RSVP BUTTON ===== */
+.rsvp-btn {
   display: inline-block;
-  margin: 6px;
-  padding: 12px 22px;
-  border: 1px solid #bfae9e;
-  border-radius: 14px;
+  margin-top: 30px;
+  padding: 14px 28px;
+  border-radius: 30px;
+  background: #bfae9e;
+  color: #fff;
   text-decoration: none;
-  color: #2b2b2b;
   font-size: 14px;
+  letter-spacing: 1px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.rsvp-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
 }
 
 /* ===== TIMING ===== */
@@ -104,8 +109,8 @@ h2, h3 {
 /* ===== LOCATION ===== */
 .location {
   position: relative;
-  height: 760px;
-  background: url("./images/FonLocation.png") center / cover no-repeat;
+  height: 820px;
+  background: url("./images/FonLocation.png") center/cover no-repeat;
   color: #fff;
 }
 
@@ -116,36 +121,31 @@ h2, h3 {
   background: linear-gradient(
     to bottom,
     rgba(0,0,0,0) 0%,
-    rgba(0,0,0,0.6) 45%,
-    rgba(0,0,0,0.6) 55%,
+    rgba(0,0,0,0.45) 50%,
     rgba(0,0,0,0) 100%
   );
 }
 
 .location .content {
-  position: absolute;
+  position: relative;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateY(-50%);
   z-index: 2;
 }
 
 .location p {
   font-size: 18px;
-}
-
-.location a {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 12px 22px;
-  border: 1px solid #fff;
-  border-radius: 14px;
-  text-decoration: none;
-  color: #fff;
-  font-size: 14px;
+  line-height: 1.5;
 }
 
 /* ===== DETAILS ===== */
+.divider {
+  width: 60px;
+  height: 1px;
+  background: #bfae9e;
+  margin: 35px auto;
+}
+
 .colors {
   display: flex;
   justify-content: center;
@@ -166,20 +166,29 @@ h2, h3 {
 .c4 { background: #d6e4e7; }
 .c5 { background: #d6cdbf; }
 
-.divider {
-  width: 60px;
-  height: 1px;
-  background: #bfae9e;
-  margin: 35px auto;
+/* ===== TIMER ===== */
+.timer {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 25px;
 }
 
-/* ===== COUNTDOWN ===== */
-#countdown {
-  font-size: 18px;
-  margin-top: 15px;
+.timer div {
+  text-align: center;
 }
 
-/* ===== FOOTER ===== */
+.timer span {
+  display: block;
+  font-size: 28px;
+  font-family: 'Playfair Display', serif;
+}
+
+.timer small {
+  font-size: 11px;
+  opacity: 0.7;
+}
+
 footer {
   padding: 30px 0;
   font-size: 12px;
@@ -191,11 +200,13 @@ footer {
 <body>
 
 <section class="hero">
-  <div class="names">ВАДИМ<br>&amp;<br>АЛСУ</div>
+  <div class="names" data-aos="fade-up">
+    ВАДИМ<br>&amp;<br>АЛСУ
+  </div>
 </section>
 
 <section class="invite">
-  <div class="content">
+  <div class="content" data-aos="fade-up">
     <p><strong>ДОРОГИЕ ДРУЗЬЯ И РОДНЫЕ!</strong></p>
     <p>
       Есть события которые остаются в памяти на всю жизнь.<br>
@@ -203,22 +214,21 @@ footer {
       С большой радостью приглашаем вас разделить с нами главное событие этой весны —
       день нашей свадьбы.
     </p>
-
     <h3>18.04.26</h3>
 
-    <div class="rsvp">
-      <a href="https://wa.me/79871013865" target="_blank">WhatsApp</a>
-      <a href="https://t.me/tomasorato" target="_blank">Telegram</a>
-    </div>
-
-    <p style="font-size:13px;opacity:0.7;margin-top:10px;">
-      Пожалуйста, напишите ваше имя и формат присутствия
-    </p>
+    <a
+      href="https://wa.me/79871013865?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%0A%D0%9F%D0%BE%D0%B4%D1%82%D0%B2%D0%B5%D1%80%D0%B6%D0%B4%D0%B0%D1%8E%20%D1%81%D0%B2%D0%BE%D1%91%20%D0%BF%D1%80%D0%B8%D1%81%D1%83%D1%82%D1%81%D1%82%D0%B2%D0%B8%D0%B5%20%D0%BD%D0%B0%20%D0%B2%D0%B0%D1%88%D0%B5%D0%B9%20%D1%81%D0%B2%D0%B0%D0%B4%D1%8C%D0%B1%D0%B5%20%F0%9F%92%8D%0A%D0%98%D0%BC%D1%8F%20%D0%B3%D0%BE%D1%81%D1%82%D1%8F%3A%0A%D0%91%D1%83%D0%B4%D1%83%20(%D0%BE%D0%B4%D0%B8%D0%BD%20/%20%D1%81%20%D0%BF%D0%B0%D1%80%D0%BE%D0%B9)"
+      target="_blank"
+      class="rsvp-btn"
+      data-aos="zoom-in"
+    >
+      Подтвердить присутствие
+    </a>
   </div>
 </section>
 
 <section>
-  <div class="content">
+  <div class="content" data-aos="fade-up">
     <h2>ТАЙМИНГ</h2>
     <div class="time-row"><span>16:30</span><span>Сбор гостей / фуршет</span></div>
     <div class="time-row"><span>17:00</span><span>Торжественная церемония</span></div>
@@ -228,22 +238,22 @@ footer {
 </section>
 
 <section class="location">
-  <div class="content">
+  <div class="content" data-aos="fade-up">
     <h2>ЛОКАЦИЯ</h2>
-    <p>
-      <strong>Комплекс «Тан»</strong><br>
-      г. Уфа, ул. Рихарда Зорге, 65
-    </p>
+    <p><strong>Комплекс «Тан»</strong><br>г. Уфа, ул. Рихарда Зорге, 65</p>
 
-    <a href="https://yandex.ru/maps/?ll=54.770474%2C56.010865&mode=routes"
-       target="_blank">
+    <a
+      class="rsvp-btn"
+      href="https://yandex.ru/maps/?rtext=~54.770474,56.010865"
+      target="_blank"
+    >
       Построить маршрут
     </a>
   </div>
 </section>
 
 <section class="details">
-  <div class="content">
+  <div class="content" data-aos="fade-up">
     <h3>ДРЕСС-КОД</h3>
     <p>
       Для нас самое главное – ваше присутствие.<br>
@@ -268,16 +278,8 @@ footer {
 
     <div class="divider"></div>
 
-    <h3>КОНТАКТЫ</h3>
-    <p>
-      +7 987 101-38-65 — Вадим<br>
-      +7 964 955-52-60 — Алсу ♥️
-    </p>
-
-    <div class="divider"></div>
-
     <h3>До события осталось</h3>
-    <div id="countdown"></div>
+    <div class="timer" id="timer"></div>
   </div>
 </section>
 
@@ -285,28 +287,35 @@ footer {
   С любовью, Вадим & Алсу
 </footer>
 
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
-const countdownEl = document.getElementById("countdown");
-const eventDate = new Date("2026-04-18T00:00:00");
+AOS.init({
+  duration: 900,
+  easing: 'ease-out',
+  once: true,
+  offset: 80
+});
 
-function updateCountdown() {
-  const now = new Date();
-  const diff = eventDate - now;
+const weddingDate = new Date('2026-04-18T00:00:00').getTime();
+const timer = document.getElementById('timer');
 
-  if (diff <= 0) {
-    countdownEl.innerText = "Этот день настал 🤍";
-    return;
-  }
+function updateTimer() {
+  const now = new Date().getTime();
+  const diff = weddingDate - now;
 
-  const days = Math.floor(diff / 1000 / 60 / 60 / 24);
-  const hours = Math.floor(diff / 1000 / 60 / 60) % 24;
-  const minutes = Math.floor(diff / 1000 / 60) % 60;
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((diff / (1000 * 60)) % 60);
 
-  countdownEl.innerText = `${days} дней ${hours} часов ${minutes} минут`;
+  timer.innerHTML = `
+    <div><span>${days}</span><small>дней</small></div>
+    <div><span>${hours}</span><small>часов</small></div>
+    <div><span>${minutes}</span><small>минут</small></div>
+  `;
 }
 
-setInterval(updateCountdown, 60000);
-updateCountdown();
+updateTimer();
+setInterval(updateTimer, 60000);
 </script>
 
 </body>
